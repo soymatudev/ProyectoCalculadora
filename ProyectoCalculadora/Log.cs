@@ -15,7 +15,8 @@ namespace ProyectoCalculadora
         private SHA256 SHA256;
         public Log(string username)
         {
-            // Get-Content -Path "process.log" -Wait 
+            // ruta similar: cd C:\Users\numbe\AppData\Roaming\ProyectoCalculadora\logs\
+            // equivalente a tail -f: Get-Content -Path "process.log" -Wait 
             this.SHA256 = SHA256.Create();
             this.username = username;
         }
