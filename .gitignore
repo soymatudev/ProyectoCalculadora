@@ -1,0 +1,60 @@
+# Archivos y carpetas generados por Visual Studio
+.vs/
+*.user
+*.suo
+*.vcxproj.user
+*.pdb
+*.opendb
+*.cache
+*.ilk
+*.log
+*.tlog
+*.lastbuildstate
+*.sdf
+*.opensdf
+*.tmp
+
+# Archivos y carpetas de compilación
+bin/
+obj/
+*.exe
+*.dll
+*.lib
+*.so
+*.a
+*.out
+
+# Archivos de paquetes y dependencias
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+*.dSYM/
+
+# Archivos temporales del sistema operativo
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+*.swp
+*.bak
+*.tmp
+*.temp
+
+# Configuraciones del IDE y herramientas específicas
+*.ide
+*.sqlproj.user
+*.csproj.user
+*.config
+*.resharper/*
+*.vspscc
+*.vssscc
+
+# Archivos de publicación
+.publishsettings
+
+# Archivos y carpetas de herramientas específicas
+_ReSharper*/
+test-result.xml
+TestResults/
+build/
