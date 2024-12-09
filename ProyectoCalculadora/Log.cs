@@ -26,7 +26,7 @@ namespace ProyectoCalculadora
             string logDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ProyectoCalculadora", "logs");
             Directory.CreateDirectory(logDirectory); // Crea la carpeta si no existe <= de ese si acuerdate
             string logFilePath = Path.Combine(logDirectory, "process.log");
-            Console.WriteLine(logFilePath);
+            //Console.WriteLine(logFilePath);
             return logFilePath;
         }
         
