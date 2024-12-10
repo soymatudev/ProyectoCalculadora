@@ -24,8 +24,12 @@ namespace ProyectoCalculadora
         {
             this.initUser();
             Calculadora calc = new Calculadora(menu(), this.username);
-            if (repeat() == 1) program.Main(null);
-            else this.Log.WriteLog("", string.Format("El usuario: {0} ha finalizado sesion", this.username));  Environment.Exit(0);
+            if (repeat() == 1) {
+                program.Main(null);
+            } else {
+                this.Log.WriteLog("", string.Format("El usuario: {0} ha finalizado sesion", this.username));
+                Environment.Exit(0);
+            }
         }
         public void initUser()
         {
@@ -45,7 +49,10 @@ namespace ProyectoCalculadora
             Console.WriteLine("5. Salir");
             Console.WriteLine("Ingrese una opción: ");
             option = Convert.ToInt32(this.Funciones.numVal(1, 5));
-            if (option == 5) this.Log.WriteLog("", string.Format("El usuario: {0} ha finalizado sesion", this.username));  Environment.Exit(0);
+            if (option == 5) {
+                this.Log.WriteLog("", string.Format("El usuario: {0} ha finalizado sesion", this.username));
+                Environment.Exit(0);
+            }
             return option;
         }
 
