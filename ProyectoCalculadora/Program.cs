@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using System.Security.Cryptography;
-using System.IO.Pipes;
-
-namespace ProyectoCalculadora
+﻿namespace ProyectoCalculadora
 {
     public class program
     {
@@ -22,8 +13,10 @@ namespace ProyectoCalculadora
 
         public void init()
         {
-            this.initUser();
+            this.initUser(); // Inicializa el usuario
+            // Inicializa la calculadora
             Calculadora calc = new Calculadora(menu(), this.username);
+            // Pregunta si desea realizar otra operacion o salir del programa
             if (repeat() == 1) {
                 program.Main(null);
             } else {
@@ -33,6 +26,7 @@ namespace ProyectoCalculadora
         }
         public void initUser()
         {
+            // Inicializa el usuario y el log de acuerdo al usuario
             Console.WriteLine("Ingrese su nombre de usuario: ");
             this.username = Console.ReadLine().Trim();
             this.Log = new Log(this.username);
@@ -68,6 +62,7 @@ namespace ProyectoCalculadora
 
     public class Funciones
     {
+        // Valida que la entrada sea un numero entero y este dentro de un rango
         public int numVal(int min, int max)
         {
             int numero;
@@ -81,7 +76,7 @@ namespace ProyectoCalculadora
                 Console.WriteLine("Entrada inválida. Por favor, intenta nuevamente.");
             }
         }
-
+        // Valida que la entrada sea un numero decimal y este dentro de un rango
         public double numValDouble(double min, double max)
         {
             double numero;

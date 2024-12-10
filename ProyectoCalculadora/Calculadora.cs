@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ProyectoCalculadora
+﻿namespace ProyectoCalculadora
 {
     internal class Calculadora
     {
@@ -20,12 +14,13 @@ namespace ProyectoCalculadora
             this.opci = opci;
             this.username = username;
             Log = new Log(username);
-            initMessage();
-            init();
+            initMessage(); // Inicializa el mensaje de acuerdo a la operacion
+            init(); // Inicializa la operacion
         }
 
         public void init()
         {
+            // Inicializa la operacion de acuerdo a la opcion seleccionada
             double result = 0;
             switch (this.opci)
             {
@@ -47,7 +42,8 @@ namespace ProyectoCalculadora
         }
 
         public void initMessage()
-        {      
+        {
+            // Inicializa el mensaje de acuerdo a la operacion
             if (this.opci != 4)
             {
                 Console.WriteLine("Ingrese con cuantos numeros desea operar: ");
@@ -61,7 +57,7 @@ namespace ProyectoCalculadora
 
         public double[] loopData()
         {
-
+            // Inicializa los datos de acuerdo a la longitud
             double[] data = new double[this.longitud];
             for (int i = 0; i < this.longitud; i++)
             {

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using System.Security.Cryptography;
+﻿using System.Text; // Para codificar el mensaje en UTF8
+using System.Security.Cryptography; // Para encriptar el mensaje con SHA256
 
 namespace ProyectoCalculadora
 {
@@ -17,27 +12,29 @@ namespace ProyectoCalculadora
         {
             // ruta similar: cd C:\Users\numbe\AppData\Roaming\ProyectoCalculadora\logs\
             // equivalente a tail -f: Get-Content -Path "process.log" -Wait 
-            this.SHA256 = SHA256.Create();
-            this.username = username;
+            this.SHA256 = SHA256.Create(); // Crea el objeto SHA256 para encriptar los mensajes de log
+            this.username = username; // Guarda el nombre de usuario
         }
 
         public string logPath()
         {
+            // Crea la carpeta logs en la carpeta de usuario de la aplicacion
             string logDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ProyectoCalculadora", "logs");
             Directory.CreateDirectory(logDirectory); // Crea la carpeta si no existe <= de ese si acuerdate
-            string logFilePath = Path.Combine(logDirectory, "process.log");
-            //Console.WriteLine(logFilePath);
+            string logFilePath = Path.Combine(logDirectory, "process.log"); // Crea el archivo process.log en la carpeta logs
             return logFilePath;
         }
         
         public void WriteLog(string message, string fun)
         {
             try
-            {//File.AppendAllText(logFilePath, "Este es un registro de prueba.\n");
+            {   
                 string msg = message;
+                // Encripta el mensaje con SHA256 y lo guarda en el archivo process.log
                 byte[] hashmessage = this.SHA256.ComputeHash(Encoding.UTF8.GetBytes(message));
                 string logfile = string.Format(logPath());
-                message = PrintByteArray(hashmessage);
+                message = PrintByteArray(hashmessage); // Convierte el mensaje en un string hexadecimal
+                // Escribe el mensaje en el archivo process.log con el formato [fecha] - [usuario] - [funcion] >>> [mensaje]
                 using (StreamWriter LogWrite = new StreamWriter(logfile, true))
                 {
                     LogWrite.WriteLine(string.Format("[{0}] - {1} - {2} >>> {3}", DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss"), this.username, fun, (msg != "" ? message : "")));
@@ -50,10 +47,10 @@ namespace ProyectoCalculadora
 
         private static string PrintByteArray(byte[] array)
         {
+            // Convierte un array de bytes en un string hexadecimal
             string result = "";
             for (int i = 0; i < array.Length; i++)
             {
-                //Console.Write($"{array[i]:X2}");
                 result = result + $"{array[i]:X2}";
                 if ((i % 4) == 3) result += " ";
             }
