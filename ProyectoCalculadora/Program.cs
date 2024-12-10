@@ -82,13 +82,13 @@ namespace ProyectoCalculadora
             }
         }
 
-        public int numValDouble(double min, double max)
+        public double numValDouble(double min, double max)
         {
-            int numero;
+            double numero;
             while (true)
             {
                 string entrada = Console.ReadLine();
-                if (int.TryParse(entrada, out numero) && numero >= min && numero <= max)
+                if (double.TryParse(entrada, out numero) && numero >= min && numero <= max)
                 {
                     return numero;
                 }
